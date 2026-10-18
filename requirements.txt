@@ -1,0 +1,6 @@
+# Tested with nibabel 5.4, numpy 2.5, scipy 1.18, scikit-image 0.26, matplotlib 3.11
+nibabel>=5
+numpy>=1.24
+scipy>=1.10
+scikit-image>=0.21
+matplotlib>=3.7

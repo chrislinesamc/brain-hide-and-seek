@@ -1,0 +1,16 @@
+# Data stays outside the repo
+*.nii
+*.nii.gz
+*.mnc
+*.npy
+data/*
+!data/.gitkeep
+results/*
+!results/.gitkeep
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+.ipynb_checkpoints/
