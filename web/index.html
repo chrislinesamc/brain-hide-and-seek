@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Hide and Seek: Brain Edition</title>
+    <link rel="icon" href="data:," />
+    <link rel="stylesheet" href="/style.css" />
+    <script type="importmap">
+      {
+        "imports": {
+          "three": "/vendor/three/three.module.js",
+          "three/addons/controls/OrbitControls.js": "/vendor/three/OrbitControls.js"
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <header>
+      <h1>Hide and Seek: Brain Edition</h1>
+      <p id="status" role="status" aria-live="polite">Loading sections…</p>
+    </header>
+
+    <main>
+      <section class="viewer" aria-label="Section viewer">
+        <canvas
+          id="section-canvas"
+          role="img"
+          aria-label="Current brain section. Drag to draw a search box."
+        ></canvas>
+        <div class="controls">
+          <button id="prev" type="button" aria-label="Previous section">◀</button>
+          <input id="slider" type="range" min="0" max="0" value="0" aria-label="Section" />
+          <button id="next" type="button" aria-label="Next section">▶</button>
+          <output id="section-label" for="slider"></output>
+        </div>
+        <div class="options">
+          <p class="hint">Drag on the section to draw a box. The search runs when you let go.</p>
+          <label class="hint" id="region-picker" hidden>
+            Or find a region
+            <select id="region">
+              <option value="">Choose…</option>
+            </select>
+          </label>
+          <div class="toggles">
+            <label class="hint">
+              <input id="rotation" type="checkbox" />
+              Allow rotation (0°, 90°, 180°, 270°)
+            </label>
+            <label class="hint">
+              <input id="mirror" type="checkbox" />
+              Allow mirror (left ↔ right)
+            </label>
+          </div>
+        </div>
+      </section>
+
+      <aside aria-label="Top matches">
+        <div class="aside-head">
+          <h2>Top matches</h2>
+          <button id="clear" type="button" disabled>Clear</button>
+        </div>
+        <ol id="matches"></ol>
+      </aside>
+    </main>
+
+    <section class="strip" aria-label="Match score for every section">
+      <h2>Score per section <span class="muted">(1 = back of the brain → front)</span></h2>
+      <canvas id="strip-canvas" role="img" aria-label="Match score per section. Click to jump."></canvas>
+    </section>
+
+    <section class="strip" aria-label="Stack in 3D">
+      <h2>
+        Stack in 3D
+        <span class="muted">(searched area: query blue, top matches red · drag to turn, scroll to zoom, click a patch to open its section)</span>
+      </h2>
+      <div
+        id="stack-3d"
+        role="img"
+        aria-label="Every section stacked back to front; the searched area on the query and top matches is drawn solid."
+      ></div>
+    </section>
+
+    <script type="module" src="/app.js"></script>
+  </body>
+</html>
